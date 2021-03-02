@@ -1,0 +1,7 @@
+add-library ./appserver/bin/mysql-connector-java-8.0.21.jar
+
+create-jdbc-connection-pool --driverclassname com.mysql.cj.jdbc.Driver --restype java.sql.Driver --property user=root:password=root:url="jdbc:mysql://mysql/carshop?useSSL=false&serverTimezone=Europe/Moscow" my_persistence_unit
+
+create-jdbc-resource --connectionpoolid my_persistence_unit jdbc/my_persistence_unit
+
+

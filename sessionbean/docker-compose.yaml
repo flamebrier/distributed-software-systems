@@ -1,0 +1,31 @@
+version: '3.2'
+
+services:
+ 
+  mysql:
+    build:
+      context: ./docker/mysql 
+    restart: always
+    environment:
+     - MYSQL_DATABASE=carshop
+     - MYSQL_USER=brier
+     - MYSQL_PASSWORD=sunnyday
+     - MYSQL_ROOT_PASSWORD=root
+     - TZ=Europe/Moscow
+    ports:
+     - 3376:3306
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    
+  wildfly:
+    build:
+      context: ./target
+      dockerfile: ../docker/wildfly/Dockerfile
+    restart: always
+    environment:
+      - WILDFLY_USERNAME=my_user
+      - WILDFLY_PASSWORD=my_password
+    ports:
+      - 8085:8080
+      - 9995:9990
+    depends_on:
+      - mysql

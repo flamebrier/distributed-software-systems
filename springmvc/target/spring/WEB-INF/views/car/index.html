@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CarShop</title>
+    <link rel="stylesheet" href="../styles.css" th:href="@{/styles.css}">
+    <style>
+        html {
+            font-family: 'Trebuchet MS', 'Arial', serif;
+        }
+        header {
+            font-family: 'Trebuchet MS', 'Arial', serif;
+        }
+
+        header h1 {
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none; /*remove list msarkers*/
+            margin: 0; /*remove useless auto margin*/
+            padding-left: 30%; /*remove useless auto padding*/
+            text-align: center; /*place menu at the center*/
+            background-color: #EFEFEF;
+            background-size: 30%;
+            background-position: center left;
+            background-repeat: no-repeat;
+            height:50px;
+        }
+        nav ul li {
+            display: inline-block; /*show in one line*/
+            margin: 5px; /*margin between elements*/
+            padding: 10px; /*padding inside element*/
+            transition: all 0.5s ease-in-out;
+            border-bottom: 0 solid red;
+        }
+        nav a {
+            text-decoration: none; /*remove link underline*/
+            font-size: 1.2em;
+            color: tomato;
+            transition: all 0.5s ease-in-out;
+        }
+        nav a:hover {/*link under pointer*/
+            color: red;
+        }
+        nav ul li:hover { /*element under pointer*/
+            border-bottom: 5px solid red;
+        }
+
+        table, form {
+            width: 50%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-color: slategray;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>CarShop</h1>
+    <nav>
+        <ul>
+            <li><a href="car/create">Добавить авто</a>
+            <li><a href="/">Список автомобилей</a>
+        </ul>
+    </nav>
+</header>
+<table>
+    <thead>
+    <tr>
+        <th>
+            №
+        </th>
+        <th>
+            Модель
+        </th>
+        <th>
+            Год выпуска
+        </th>
+        <th>
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="car, iterStat : ${carList}">
+        <td th:text="${car.id}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.year}"></td>
+        <td><a th:href="@{|/car/details/${car.id}|}">Подробности</a></td>
+        <td>
+            <form action="#" th:action="@{/car/delete}" method="get">
+                <input name="id" th:value="${car.id}" type="hidden">
+                <input type="submit" value="Удалить">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

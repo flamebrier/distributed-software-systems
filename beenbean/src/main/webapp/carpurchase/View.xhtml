@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCarPurchaseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCarPurchaseLabel_endOfCarPurchase}"/>
+                    <h:outputText value="#{carPurchaseController.selected.purchaseDate}" title="#{bundle.ViewCarPurchaseTitle_endOfCarPurchase}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCarPurchaseLabel_startOfCarPurchase}"/>
+                    <h:outputText value="#{carPurchaseController.selected.carOnSaleDate}" title="#{bundle.ViewCarPurchaseTitle_startOfCarPurchase}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCarPurchaseLabel_carshop}"/>
+                    <h:outputText value="#{carPurchaseController.selected.carshop}" title="#{bundle.ViewCarPurchaseTitle_carshop}"/>
+                    <h:outputText value="#{bundle.ViewCarPurchaseLabel_id}"/>
+                    <h:outputText value="#{carPurchaseController.selected.id}" title="#{bundle.ViewCarPurchaseTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{carPurchaseController.destroyAndView}" value="#{bundle.ViewCarPurchaseDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCarPurchaseEditLink}"/>
+                <br />
+                <h:commandLink action="#{carPurchaseController.prepareCreate}" value="#{bundle.ViewCarPurchaseCreateLink}" />
+                <br />
+                <h:commandLink action="#{carPurchaseController.prepareList}" value="#{bundle.ViewpurchaseshowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCarPurchaseIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

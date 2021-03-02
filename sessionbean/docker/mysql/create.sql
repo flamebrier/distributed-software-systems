@@ -1,0 +1,14 @@
+CREATE DATABASE IF NOT EXISTS carshop;
+USE carshop;
+CREATE TABLE IF NOT EXISTS car
+(
+	id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	model CHAR(100) NOT NULL,
+    brand CHAR(255) NULL,
+    year BIGINT NULL
+);
+
+INSERT INTO car(model, brand, year) VALUES
+('2752','GAZ', 2005),
+('2217','GAZ', 2008),
+('S6','Mercedes', 2015);

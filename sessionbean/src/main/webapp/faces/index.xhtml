@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+
+<h:body>
+    <header>
+        <h1>CarShop</h1>
+        <nav>
+            <ul>
+                <li>
+                    <h:link outcome="create.xhtml" value="Добавить авто"/>
+                </li>
+                <li>
+                    <h:link outcome="index.xhtml" value="Список автомобилей"/>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h2>Список авто</h2>
+
+    <h:form id="carsList">
+
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Модель</th>
+                <th scope="col">Марка</th>
+                <th scope="col">Год выпуска</th>
+                <th scope="col">Удалить</th>
+                <th scope="col">Подробнее</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <ui:repeat var="c" value="#{carController.carList}">
+                <tr>
+                    <th scope="row"><h:outputText value="#{c.id}"/></th>
+                    <td>#{c.model}</td>
+                    <td>#{c.brand}</td>
+                    <td>#{c.year}</td>
+                    <td>
+                        <h:commandButton action="#{carController.deleteCar(c.id)}" value="Удалить"/>
+                    </td>
+                    <td>
+                        <h:link outcome="edit.xhtml?id=#{c.id}" value="Подробнее"/>
+                    </td>
+                </tr>
+            </ui:repeat>
+            </tbody>
+
+        </table>
+
+    </h:form>
+</h:body>
+
+</html>

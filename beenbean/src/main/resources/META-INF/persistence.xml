@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <!-- Define Persistence Unit -->
+  <persistence-unit name="my_persistence_unit">
+    <class>ru.flamebrier.beenbean.models.Car</class>
+    <class>ru.flamebrier.beenbean.models.Purchaser</class>
+    <jta-data-source>jdbc/my_persistence_unit</jta-data-source>
+    <class>ru.flamebrier.beenbean.models.Carshop</class>
+    <class>ru.flamebrier.beenbean.models.Manager</class>
+    <class>ru.flamebrier.beenbean.models.CarPurchase</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql/carshop?useSSL=false&amp;serverTimezone=Europe/Moscow"/>
+      <property name="javax.persistence.jdbc.purchaser" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="root"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create-or-extend-tables"/>
+    </properties>
+  </persistence-unit>
+</persistence>

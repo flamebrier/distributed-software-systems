@@ -1,0 +1,17 @@
+version: '3.2'
+
+services:
+  myqsl:
+    container_name: mysql
+    build:
+      context: ./data 
+    restart: always
+    environment:
+     - MYSQL_DATABASE=carshop
+     - MYSQL_USER=brier
+     - MYSQL_PASSWORD=sunnyday
+     - MYSQL_ROOT_PASSWORD=root
+     - TZ=Europe/Moscow
+    ports:
+     - 3376:3306
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+
+<h:body>
+    <header>
+        <h1>CarShop</h1>
+        <nav>
+            <ul>
+                <li>
+                    <h:link outcome="create.xhtml" value="Добавить авто"/>
+                </li>
+                <li>
+                    <h:link outcome="index.xhtml" value="Список автомобилей"/>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h2>Создать авто</h2>
+    <h:form id="carForm">
+        <table>
+            <tr>
+                <td><label for="inpNick">Модель</label></td>
+                <td><h:inputText id="inpNick" value="#{carController.car.model}"/></td>
+            </tr>
+            <tr>
+                <td><label for="inpName">Марка</label></td>
+                <td><h:inputText id="inpName" value="#{carController.car.brand}"/></td>
+            </tr>
+            <tr>
+                <td><label for="inpRat">Год выпуска</label></td>
+                <td><h:inputText id="inpRat" value="#{carController.car.year}"/></td>
+            </tr>
+        </table>
+        <h:commandButton action="#{carController.createCar()}" value="Сохранить"/>
+
+    </h:form>
+
+</h:body>
+
+</html>
