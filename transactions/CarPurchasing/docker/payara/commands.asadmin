@@ -1,0 +1,9 @@
+add-library ./appserver/bin/mysql-connector-java-8.0.21.jar
+
+create-jdbc-connection-pool --datasourceclassname com.mysql.cj.jdbc.MysqlXADataSource --restype javax.sql.XADataSource --property user=root:password=root:url="jdbc:mysql://mysqlcar/car?useSSL=false&serverTimezone=Europe/Moscow" my_persistencex_car
+
+create-jdbc-resource --connectionpoolid my_persistencex_car jdbc/my_persistencex_car
+
+create-jdbc-connection-pool --datasourceclassname com.mysql.cj.jdbc.MysqlXADataSource --restype javax.sql.XADataSource --property user=root:password=root:url="jdbc:mysql://mysqlpurchaser/purchaser?useSSL=false&serverTimezone=Europe/Moscow" my_persistencex_purchaser
+
+create-jdbc-resource --connectionpoolid my_persistencex_purchaser jdbc/my_persistencex_purchaser

@@ -1,0 +1,4 @@
+/home/flamebrier/education/projects/java/distributed-software-systems/transactions/carmodule/src/main/java/ru/flamebrier/carmodule/models/Car.java
+/home/flamebrier/education/projects/java/distributed-software-systems/transactions/carmodule/src/main/java/ru/flamebrier/carmodule/dao/CarDao.java
+/home/flamebrier/education/projects/java/distributed-software-systems/transactions/carmodule/src/main/java/ru/flamebrier/carmodule/beans/JpaCarDao.java
+/home/flamebrier/education/projects/java/distributed-software-systems/transactions/carmodule/src/main/java/ru/flamebrier/carmodule/dao/Dao.java

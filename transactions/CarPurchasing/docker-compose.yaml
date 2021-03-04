@@ -1,0 +1,43 @@
+version: '3.2'
+
+services:
+ 
+  mysqlcar:
+    container_name: mysqlcar
+    build:
+      context: ./docker/mysqlcar
+    restart: always
+    environment:
+     - MYSQL_DATABASE=car
+     - MYSQL_USER=brier
+     - MYSQL_PASSWORD=sunnyday
+     - MYSQL_ROOT_PASSWORD=root
+     - TZ=Europe/Moscow
+    ports:
+     - 3376:3306
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    
+  mysqlpurchaser:
+    container_name: mysqlpurchaser
+    build:
+      context: ./docker/mysqlpurchaser
+    restart: always
+    environment:
+     - MYSQL_DATABASE=purchaser
+     - MYSQL_USER=brier
+     - MYSQL_PASSWORD=sunnyday
+     - MYSQL_ROOT_PASSWORD=root
+     - TZ=Europe/Moscow
+    ports:
+     - 3396:3306
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    
+  payara:
+    container_name: payara
+    build:
+      context: .
+      dockerfile: ./docker/payara/Dockerfile
+    restart: always
+    ports:
+      - 8085:8080
+      - 4949:4848

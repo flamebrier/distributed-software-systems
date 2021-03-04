@@ -1,0 +1,55 @@
+html {
+    font-family: 'Trebuchet MS', 'Arial', serif;
+}
+header {
+    font-family: 'Trebuchet MS', 'Arial', serif;
+}
+
+header h1 {
+    text-align: center;
+}
+
+nav {
+    list-style-type: none; /*remove list msarkers*/
+    margin: 0; /*remove useless auto margin*/
+    padding-left: 30%; /*remove useless auto padding*/
+    text-align: center; /*place menu at the center*/
+    background-color: #EFEFEF;
+    background-image: url("https://cdn.pixabay.com/photo/2017/09/01/20/23/ford-2705402_960_720.jpg");
+    background-size: 30%;
+    background-position: center left;
+    background-repeat: no-repeat;
+}
+input, a {
+    display: block; /*show in one line*/
+    margin: 5px; /*margin between elements*/
+    padding: 10px; /*padding inside element*/
+    transition: all 0.5s ease-in-out;
+    border: 0;
+    border-bottom: 0 solid red;
+    background-color: transparent;
+    text-decoration: none; /*remove link underline*/
+    font-size: 1.2em;
+    color: tomato;
+}
+
+a:hover {/*link under pointer*/
+    color: red;
+}
+input:hover { /*element under pointer*/
+    border-bottom: 5px solid red;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-color: slategray;
+    display: block;
+}
+
+.container {
+    display: inline-block;
+}
+
+

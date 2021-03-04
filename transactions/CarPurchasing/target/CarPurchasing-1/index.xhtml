@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Facelet Title</title>
+    <h:outputStylesheet name="css/styles.css"/>
+</h:head>
+<h:body>
+    <nav>
+        <h:form id="firstExper">
+            <h:commandButton action="#{transactionController.successTrans()}" value="Success transaction"/>
+        </h:form>
+        <h:form id="secondExper">
+            <h:commandButton action="#{transactionController.carFailPurchaserReq()}" value="Car Fail"/>
+        </h:form>
+        <h:form id="thirdExper">
+            <h:commandButton action="#{transactionController.purchaserFailCarReq()}" value="Purchaser Fail"/>
+        </h:form>
+        <h:form id="forthExper">
+            <h:commandButton action="#{transactionController.carFailPurchaserNotSup()}"
+                             value="Car Fail, Purshaser Not Supported"/>
+        </h:form>
+        <h:form id="fifthExper">
+            <h:commandButton action="#{transactionController.purchaserFailCarNotSup()}"
+                             value="Purchaser Fail, Car Not Supported"/>
+        </h:form>
+    </nav>
+    <div class="container">
+        <h:link outcome="/car/create" value="Create car"/>
+        <h:form id="carsList">
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <ui:repeat var="c" value="#{carController.cars}">
+                    <tr>
+                        <th scope="row"><h:outputText value="#{c.id}"/></th>
+                        <td>#{c.description}</td>
+                        <td>
+                            <h:commandButton action="#{carController.deleteCar(c.id)}" value="Delete"/>
+                        </td>
+                        <!--                                    <td>
+                                                                <h:link outcome="/car/edit.xhtml?id=#{c.id}" value="More info"/>
+                                                            </td>-->
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+        </h:form>
+    </div>
+
+    <div class="container">
+        <h:link outcome="/purchaser/create" value="Create purchaser"/>
+        <h:form id="purchasersList">
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date of purchasing</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <ui:repeat var="t" value="#{purchaserController.purchasers}">
+                    <tr>
+                        <th scope="row"><h:outputText value="#{t.id}"/></th>
+                        <td>#{t.name}</td>
+                        <td>#{t.purchaseDate}</td>
+                        <td>
+                            <h:commandButton action="#{purchaserController.deletePurchaser(t.id)}" value="Delete"/>
+                        </td>
+                        <!--                                    <td>
+                                                                <h:link outcome="/purchaser/edit.xhtml?id=#{t.id}" value="More info"/>
+                                                            </td>-->
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+        </h:form>
+
+    </div>
+    <!--        <br />
+            <h:link outcome="/car/List" value="Show All Car Items"/>
+            <br />
+            <h:link outcome="/purchaser/List" value="Show All Purchaser Items"/>-->
+</h:body>
+</html>
